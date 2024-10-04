@@ -96,6 +96,9 @@
         function getRandomColor() {
             return colors[Math.floor(Math.random() * colors.length)];
         }
+  function getRandomMessage() {
+            return Math.random() < 0.5 ? 'Happy Birthday Babe' : 'Love you!';
+        }
 
         // Function to display the next symbol (star, heart, or message)
         function displayNextSymbol() {
@@ -103,7 +106,7 @@
             element.className = (i % 10 === 0) ? 'message' : 'symbol';
 
             if (i % 10 === 0) {
-                element.innerHTML = generateRandomSpaces() + 'Happy Birthday Babe';  // Display "mine?" message
+                element.innerHTML = generateRandomSpaces() + getRandomMessage();  // Display "mine?" message
             } else {
                 // Alternate between displaying stars and hearts
                 const isHeart = Math.random() < 0.5;  // 50% chance for a heart
