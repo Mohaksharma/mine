@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Shining Rainbow Stars</title>
+    <title>Shining Rainbow Stars & Hearts</title>
     <style>
         body {
             background-color: #000;  /* Black background */
@@ -22,7 +22,7 @@
             text-align: center;
         }
 
-        .star {
+        .symbol {
             font-size: 2em;
             display: inline-block;
             padding: 0.2em;
@@ -79,7 +79,7 @@
         const container = document.getElementById('container');
         let i = 1;
 
-        // Define a wide range of colors for the stars
+        // Define a wide range of colors for the stars and hearts
         const colors = [
             '#FF5733', '#33FF57', '#3357FF', '#F0FF33', '#FF33F0', '#33FFF0', '#F033FF', 
             '#FF6F61', '#6B5B95', '#88B04B', '#F7CAC9', '#92A8D1', '#955251', '#B565A7', 
@@ -97,16 +97,18 @@
             return colors[Math.floor(Math.random() * colors.length)];
         }
 
-        // Function to display the next star or message
+        // Function to display the next symbol (star, heart, or message)
         function displayNextSymbol() {
             const element = document.createElement('p');
-            element.className = (i % 10 === 0) ? 'message' : 'star';
+            element.className = (i % 10 === 0) ? 'message' : 'symbol';
 
             if (i % 10 === 0) {
-                element.innerHTML = generateRandomSpaces() + 'mine?';  // Display "mine?" message
+                element.innerHTML = generateRandomSpaces() + 'Happy Birthday Babe';  // Display "mine?" message
             } else {
-                element.innerHTML = generateRandomSpaces() + '*';  // Display a star
-                element.style.color = getRandomColor();  // Apply random color to the star
+                // Alternate between displaying stars and hearts
+                const isHeart = Math.random() < 0.5;  // 50% chance for a heart
+                element.innerHTML = generateRandomSpaces() + (isHeart ? '♥' : '*');  // Display heart or star
+                element.style.color = getRandomColor();  // Apply random color
             }
 
             container.appendChild(element);
